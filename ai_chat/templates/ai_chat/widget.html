@@ -1,0 +1,497 @@
+<style>
+    /* =========================
+       AI CHAT BUTTON
+       ========================= */
+
+    #ai-chat-button {
+        position: fixed;
+        right: 22px;
+        bottom: 22px;
+        width: 62px;
+        height: 62px;
+        border: none;
+        border-radius: 50%;
+        background: #0d6efd;
+        color: white;
+        font-size: 27px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+        z-index: 9999;
+        transition: 0.2s;
+    }
+
+    #ai-chat-button:hover {
+        transform: scale(1.06);
+    }
+
+
+    /* =========================
+       CHAT WINDOW
+       ========================= */
+
+    #ai-chat-window {
+        display: none;
+
+        position: fixed;
+        right: 22px;
+        bottom: 95px;
+
+        width: 360px;
+        max-width: calc(100vw - 30px);
+
+        height: 500px;
+        max-height: calc(100vh - 120px);
+
+        background: white;
+        border-radius: 18px;
+
+        box-shadow:
+            0 12px 40px rgba(0, 0, 0, 0.25);
+
+        overflow: hidden;
+
+        z-index: 9998;
+
+        flex-direction: column;
+    }
+
+
+    /* =========================
+       HEADER
+       ========================= */
+
+    .ai-chat-header {
+        background: #0d6efd;
+        color: white;
+
+        padding: 15px 17px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .ai-chat-title {
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    .ai-chat-status {
+        font-size: 12px;
+        opacity: 0.85;
+    }
+
+    #ai-chat-close {
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+
+    /* =========================
+       MESSAGES
+       ========================= */
+
+    #ai-chat-messages {
+        flex: 1;
+
+        padding: 15px;
+
+        overflow-y: auto;
+
+        background: #f8f9fa;
+    }
+
+    .ai-message {
+        display: flex;
+        margin-bottom: 12px;
+    }
+
+    .ai-message.user {
+        justify-content: flex-end;
+    }
+
+    .ai-message-bubble {
+        max-width: 82%;
+
+        padding: 10px 13px;
+
+        border-radius: 14px;
+
+        font-size: 14px;
+        line-height: 1.5;
+
+        word-wrap: break-word;
+    }
+
+    .ai-message.bot .ai-message-bubble {
+        background: white;
+        color: #212529;
+
+        border: 1px solid #e9ecef;
+
+        border-bottom-left-radius: 4px;
+    }
+
+    .ai-message.user .ai-message-bubble {
+        background: #0d6efd;
+        color: white;
+
+        border-bottom-right-radius: 4px;
+    }
+
+
+    /* =========================
+       INPUT AREA
+       ========================= */
+
+    .ai-chat-input-area {
+        padding: 10px;
+
+        background: white;
+
+        border-top: 1px solid #e9ecef;
+
+        display: flex;
+        gap: 8px;
+    }
+
+    #ai-chat-input {
+        flex: 1;
+
+        border: 1px solid #ced4da;
+        border-radius: 12px;
+
+        padding: 10px 12px;
+
+        outline: none;
+
+        font-size: 14px;
+    }
+
+    #ai-chat-input:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.1);
+    }
+
+    #ai-chat-send {
+        border: none;
+
+        background: #0d6efd;
+        color: white;
+
+        border-radius: 12px;
+
+        padding: 0 15px;
+
+        cursor: pointer;
+    }
+
+    #ai-chat-send:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media (max-width: 576px) {
+
+        #ai-chat-button {
+            width: 56px;
+            height: 56px;
+
+            right: 15px;
+            bottom: 15px;
+
+            font-size: 24px;
+        }
+
+        #ai-chat-window {
+            right: 10px;
+            left: 10px;
+
+            bottom: 82px;
+
+            width: auto;
+
+            height: min(500px, calc(100vh - 105px));
+
+            border-radius: 16px;
+        }
+
+        .ai-chat-header {
+            padding: 13px 14px;
+        }
+
+        #ai-chat-messages {
+            padding: 12px;
+        }
+
+        .ai-message-bubble {
+            max-width: 88%;
+            font-size: 14px;
+        }
+    }
+</style>
+
+
+<!-- =========================
+     AI CHAT BUTTON
+     ========================= -->
+
+<button
+    id="ai-chat-button"
+    type="button"
+    aria-label="Open AI Assistant">
+
+    💬
+
+</button>
+
+
+<!-- =========================
+     AI CHAT WINDOW
+     ========================= -->
+
+<div id="ai-chat-window">
+
+    <div class="ai-chat-header">
+
+        <div>
+            <div class="ai-chat-title">
+                🤖 Online Library AI
+            </div>
+
+            <div class="ai-chat-status">
+                Ask me anything
+            </div>
+        </div>
+
+        <button
+            id="ai-chat-close"
+            type="button"
+            aria-label="Close AI Assistant">
+
+            ×
+
+        </button>
+
+    </div>
+
+
+    <div id="ai-chat-messages">
+
+        <div class="ai-message bot">
+
+            <div class="ai-message-bubble">
+
+                👋 Hello! I'm your Online Library AI Assistant.
+                <br><br>
+                You can ask me about books, authors, ordering, or anything else.
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <form id="ai-chat-form" class="ai-chat-input-area">
+
+        {% csrf_token %}
+
+        <input
+            type="text"
+            id="ai-chat-input"
+            placeholder="Ask something..."
+            autocomplete="off"
+            required>
+
+        <button
+            type="submit"
+            id="ai-chat-send">
+
+            Send
+
+        </button>
+
+    </form>
+
+</div>
+
+
+<script>
+
+(function () {
+
+    const button = document.getElementById("ai-chat-button");
+    const windowBox = document.getElementById("ai-chat-window");
+    const closeButton = document.getElementById("ai-chat-close");
+
+    const form = document.getElementById("ai-chat-form");
+    const input = document.getElementById("ai-chat-input");
+    const sendButton = document.getElementById("ai-chat-send");
+
+    const messages = document.getElementById("ai-chat-messages");
+
+
+    /* =========================
+       OPEN CHAT
+       ========================= */
+
+    button.addEventListener("click", function () {
+
+        windowBox.style.display = "flex";
+
+        input.focus();
+
+    });
+
+
+    /* =========================
+       CLOSE CHAT
+       ========================= */
+
+    closeButton.addEventListener("click", function () {
+
+        windowBox.style.display = "none";
+
+    });
+
+
+    /* =========================
+       ADD MESSAGE
+       ========================= */
+
+    function addMessage(text, type) {
+
+        const message = document.createElement("div");
+
+        message.className = "ai-message " + type;
+
+
+        const bubble = document.createElement("div");
+
+        bubble.className = "ai-message-bubble";
+
+        bubble.textContent = text;
+
+
+        message.appendChild(bubble);
+
+        messages.appendChild(message);
+
+
+        messages.scrollTop = messages.scrollHeight;
+
+    }
+
+
+    /* =========================
+       SEND MESSAGE
+       ========================= */
+
+    form.addEventListener("submit", async function (event) {
+
+        event.preventDefault();
+
+
+        const message = input.value.trim();
+
+
+        if (!message) {
+            return;
+        }
+
+
+        addMessage(message, "user");
+
+
+        input.value = "";
+
+        input.disabled = true;
+
+        sendButton.disabled = true;
+
+        sendButton.textContent = "...";
+
+
+        const csrfToken = form.querySelector(
+            "[name=csrfmiddlewaretoken]"
+        ).value;
+
+
+        const formData = new FormData();
+
+        formData.append("message", message);
+
+        formData.append(
+            "csrfmiddlewaretoken",
+            csrfToken
+        );
+
+
+        try {
+
+            const response = await fetch(
+                "{% url 'ai_chat' %}",
+                {
+                    method: "POST",
+                    body: formData,
+
+                    headers: {
+                        "X-Requested-With": "XMLHttpRequest"
+                    }
+                }
+            );
+
+
+            const data = await response.json();
+
+
+            if (data.success) {
+
+                addMessage(
+                    data.reply,
+                    "bot"
+                );
+
+            } else {
+
+                addMessage(
+                    data.error || "Sorry, something went wrong.",
+                    "bot"
+                );
+
+            }
+
+
+        } catch (error) {
+
+            addMessage(
+                "Sorry, I couldn't connect to the AI service.",
+                "bot"
+            );
+
+        }
+
+
+        input.disabled = false;
+
+        sendButton.disabled = false;
+
+        sendButton.textContent = "Send";
+
+        input.focus();
+
+    });
+
+
+})();
+
+</script>

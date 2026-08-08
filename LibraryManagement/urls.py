@@ -48,6 +48,8 @@ urlpatterns = [
 
     # Accounts
     path('accounts/', include('accounts.urls')),
+    
+    path('ai/', include('ai_chat.urls')),
 ]
 
 

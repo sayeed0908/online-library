@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'accounts',
     'books',
     'orders',
+    'ai_chat',
 ]
 
 MIDDLEWARE = [
