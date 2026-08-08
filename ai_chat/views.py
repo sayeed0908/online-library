@@ -29,7 +29,6 @@ def ai_chat(request):
 
     try:
 
-        # Get books from the database
         books = Book.objects.all().order_by("-created_at")
 
         if books.exists():
@@ -55,10 +54,10 @@ Description: {book.description}
 
         else:
 
-            library_context = "There are currently no books in the library database."
+            library_context = (
+                "There are currently no books in the library database."
+            )
 
-
-        # AI instructions
         prompt = f"""
 You are the official AI assistant for an Online Library.
 
@@ -90,25 +89,39 @@ USER QUESTION:
 {message}
 """
 
+        print("GEMINI: Starting request...", flush=True)
 
         client = genai.Client(api_key=api_key)
 
+        print("GEMINI: Client created...", flush=True)
 
         response = client.models.generate_content(
-            model="gemini-3.6-flash",
+            model="gemini-2.5-flash",
             contents=prompt,
         )
 
+        print("GEMINI: Response received...", flush=True)
+
+        reply = response.text
+
+        if not reply:
+            return JsonResponse({
+                "success": False,
+                "error": "Gemini returned an empty response."
+            }, status=500)
 
         return JsonResponse({
             "success": True,
-            "reply": response.text
+            "reply": reply
         })
 
+    except Exception as e:
 
-    except Exception:
+        error_message = repr(e)
+
+        print("GEMINI AI ERROR:", error_message, flush=True)
 
         return JsonResponse({
             "success": False,
-            "error": "AI service is temporarily unavailable."
+            "error": error_message
         }, status=500)
