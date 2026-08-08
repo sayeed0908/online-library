@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+
+{% block title %}Book List{% endblock %}
+
+{% block content %}
+
+{% if messages %}
+
+    {% for message in messages %}
+
+        <div class="alert alert-success text-center shadow-sm"
+             style="border-radius: 15px; font-size: 18px;">
+
+            {{ message }}
+
+        </div>
+
+    {% endfor %}
+
+{% endif %}
+
+<div style="background: linear-gradient(135deg, #0f3d3e, #164e63, #1e293b); padding: 60px 0 120px 0; min-height: 85vh;">
+
+<div class="book-list-page">
+<div class="container py-5">
+
+    <h2 class="text-center mb-4" style="color: white;">
+    📚 Library Book List
+</h2>
+
+    <form method="GET" class="mb-4">
+
+    <div class="input-group">
+
+        <input 
+        type="text"
+        name="search"
+        class="form-control"
+        placeholder="Search Book, Author, Publisher..."
+        value="{{ query|default:'' }}">
+
+
+        <button class="btn btn-primary">
+            🔍 Search
+        </button>
+
+    </div>
+
+</form>
+
+
+<form method="GET" class="mb-4">
+
+    <select name="category" class="form-select">
+
+        <option value="">
+            All Categories
+        </option>
+
+
+        {% for category in categories %}
+
+        <option value="{{ category }}">
+            {{ category }}
+        </option>
+
+        {% endfor %}
+
+
+    </select>
+
+
+    <button class="btn btn-dark mt-2">
+        Filter
+    </button>
+
+
+</form>
+
+    <div class="table-responsive">
+
+        <table class="table table-bordered table-hover align-middle">
+
+            <thead class="table-dark">
+
+                <tr>
+
+                    <th>SL</th>
+
+                    <th>Book Photo</th>
+
+                    <th>Book Name</th>
+
+                    <th>Author</th>
+
+                    <th>Publisher</th>
+
+                    <th>Source</th>
+
+                    <th>Total Pages</th>
+
+                    <th>Price</th>
+
+                    <th>Remarks</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for book in books %}
+
+                <tr>
+
+                    <td>{{ forloop.counter }}</td>
+
+                    <td>
+
+                        <img src="{{ book.photo.url }}"
+                             width="80"
+                             height="100"
+                             style="object-fit:cover;">
+
+                    </td>
+
+                    <td>{{ book.book_name }}</td>
+
+                    <td>{{ book.author }}</td>
+
+                    <td>{{ book.publisher }}</td>
+
+                    <td>{{ book.source }}</td>
+
+                    <td>{{ book.total_pages }}</td>
+
+                    <td>৳ {{ book.price }}</td>
+
+                    <td>
+    <a href="{% url 'book_detail' book.id %}" class="btn btn-primary btn-sm">
+        View
+    </a>
+
+    <a href="{% url 'order_book' book.id %}"
+    class="btn btn-success btn-sm mt-1">
+
+    Buy Now
+
+</a>
+
+</td>
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            {% empty %}
+
+                <tr>
+
+                    <td colspan="9" class="text-center">
+
+                        No Books Available
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

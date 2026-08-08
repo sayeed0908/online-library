@@ -1,0 +1,426 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+
+<!-- Hero Section -->
+
+<section class="py-5"
+style="
+background:
+linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),
+url('/static/images/library.jpg');
+
+background-size:cover;
+background-position:center;
+color:white;
+">
+
+<div class="container py-5">
+
+<div class="row align-items-center">
+
+
+<div class="col-lg-7">
+
+
+<span class="badge bg-warning text-dark mb-3 fs-6">
+📚 Welcome to Online Library
+</span>
+
+
+<h1 class="display-3 fw-bold">
+Read Today,<br>
+Lead Tomorrow.
+</h1>
+
+
+<p class="lead mt-4">
+
+Discover thousands of books from different categories.
+Search your favorite books and order them online with ease.
+
+</p>
+
+
+<a href="{% url 'book_list' %}"
+class="btn btn-warning btn-lg me-2">
+
+Browse Books
+
+</a>
+
+
+<a href="{% url 'about' %}"
+class="btn btn-outline-light btn-lg">
+
+Learn More
+
+</a>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+<!-- Latest Books -->
+
+
+<section class="latest-books-section py-5">
+
+
+<div class="container">
+
+
+<h2 class="text-center mb-5">
+
+📚 Latest Books
+
+</h2>
+
+
+
+<div class="row">
+
+
+{% for book in latest_books %}
+
+
+
+<div class="col-md-4 mb-4">
+
+
+<div class="card shadow-lg h-100 border-0">
+
+
+<img src="{{ book.photo.url }}"
+class="card-img-top"
+style="height:300px;object-fit:cover;">
+
+
+
+<div class="card-body">
+
+
+<h4>
+{{ book.book_name }}
+</h4>
+
+
+<p>
+✍️ Author:
+{{ book.author }}
+</p>
+
+
+<p>
+💰 Price:
+৳ {{ book.price }}
+</p>
+
+
+
+<a href="{% url 'book_detail' book.id %}"
+class="btn btn-primary">
+
+View Details
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+{% empty %}
+
+
+<h4 class="text-center">
+No Books Available
+</h4>
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- Statistics -->
+
+
+<section class="stats-section py-5">
+
+
+<div class="container">
+
+
+<div class="row text-center">
+
+
+
+<div class="col-md-4 mb-3">
+
+
+<div class="card shadow-lg p-4 border-0">
+
+
+<h1>
+📚 {{ total_books }}
+</h1>
+
+
+<h5>
+Total Books
+</h5>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="col-md-4 mb-3">
+
+
+<div class="card shadow-lg p-4 border-0">
+
+
+<h1>
+🛒 {{ total_orders }}
+</h1>
+
+
+<h5>
+Total Orders
+</h5>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="col-md-4 mb-3">
+
+
+<div class="card shadow-lg p-4 border-0">
+
+
+<h1>
+👥 {{ happy_readers }}
+</h1>
+
+
+<h5>
+Happy Readers
+</h5>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- Why Choose -->
+
+
+<section class="py-5 why-library-section"
+         style="background: linear-gradient(135deg, #172554, #1e3a5f, #0f172a) !important; padding-top: 80px !important; padding-bottom: 80px !important;">
+
+
+<div class="container">
+
+
+<h2 class="text-center mb-4" style="color: white;">
+    Why Choose Our Library?
+</h2>
+
+<p class="text-center mb-5" style="color: white;">
+    Everything you need to discover and buy books easily.
+</p>
+
+
+
+
+<div class="row">
+
+
+
+<div class="col-md-3 mb-3">
+
+
+<div class="card shadow text-center p-4 border-0 h-100">
+
+
+<h2>
+📚
+</h2>
+
+
+<h5>
+Huge Collection
+</h5>
+
+
+<p>
+Thousands of books from various categories.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="col-md-3 mb-3">
+
+
+<div class="card shadow text-center p-4 border-0 h-100">
+
+
+<h2>
+🔍
+</h2>
+
+
+<h5>
+Easy Search
+</h5>
+
+
+<p>
+Find books quickly by title or author.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-3 mb-3">
+
+
+<div class="card shadow text-center p-4 border-0 h-100">
+
+
+<h2>
+💰
+</h2>
+
+
+<h5>
+Affordable Price
+</h5>
+
+
+<p>
+Best books at reasonable prices.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-3 mb-3">
+
+
+<div class="card shadow text-center p-4 border-0 h-100">
+
+
+<h2>
+🚀
+</h2>
+
+
+<h5>
+Fast Service
+</h5>
+
+
+<p>
+Quick order processing and support.
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,285 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<style>
+
+    .login-page {
+
+        min-height: 82vh;
+
+        background:
+            radial-gradient(
+                circle at top left,
+                rgba(30, 64, 175, 0.35),
+                transparent 40%
+            ),
+            linear-gradient(
+                135deg,
+                #111827,
+                #1e3a5f,
+                #0f172a
+            );
+
+        padding: 70px 15px 100px;
+
+        display: flex;
+        align-items: center;
+    }
+
+
+    .login-card {
+
+        max-width: 500px;
+
+        margin: auto;
+
+        border: none;
+
+        border-radius: 28px;
+
+        background: rgba(255,255,255,0.97);
+
+        box-shadow:
+            0 25px 60px rgba(0,0,0,0.35);
+
+        padding: 45px !important;
+    }
+
+
+    .login-title {
+
+        color: #172554;
+
+        font-size: 38px;
+
+        font-weight: 700;
+    }
+
+
+    .login-subtitle {
+
+        color: #64748b;
+
+        line-height: 1.6;
+    }
+
+
+    .login-form label {
+
+        display: block;
+
+        font-weight: 600;
+
+        color: #334155;
+
+        margin-bottom: 7px;
+    }
+
+
+    .login-form input {
+
+        width: 100%;
+
+        padding: 12px 15px;
+
+        border: 1px solid #cbd5e1;
+
+        border-radius: 12px;
+
+        outline: none;
+
+        transition: 0.3s;
+    }
+
+
+    .login-form input:focus {
+
+        border-color: #1d4ed8;
+
+        box-shadow:
+            0 0 0 3px rgba(29,78,216,0.12);
+    }
+
+
+    .login-button {
+
+        width: 100%;
+
+        border: none;
+
+        border-radius: 50px;
+
+        padding: 13px;
+
+        font-size: 17px;
+
+        font-weight: 600;
+
+        color: white;
+
+        background:
+            linear-gradient(
+                135deg,
+                #1d4ed8,
+                #172554
+            );
+
+        transition: 0.3s;
+    }
+
+
+    .login-button:hover {
+
+        transform: translateY(-3px);
+
+        box-shadow:
+            0 10px 25px rgba(29,78,216,0.3);
+    }
+
+
+    .login-error {
+
+        background: #fee2e2;
+
+        color: #b91c1c;
+
+        border-radius: 12px;
+
+        padding: 12px;
+
+        margin-bottom: 20px;
+
+        text-align: center;
+    }
+
+
+    .register-text {
+
+        color: #64748b;
+
+        margin-top: 25px;
+
+        margin-bottom: 0;
+    }
+
+
+    @media (max-width: 576px) {
+
+        .login-card {
+
+            padding: 30px 22px !important;
+        }
+
+        .login-title {
+
+            font-size: 30px;
+        }
+
+    }
+
+</style>
+
+
+<div class="login-page">
+
+    <div class="container">
+
+        <div class="card login-card">
+
+
+            <div class="text-center mb-4">
+
+                <h1 class="login-title">
+                    📚 Welcome Back
+                </h1>
+
+                <p class="login-subtitle">
+                    Login to your Online Library account
+                    and continue exploring books.
+                </p>
+
+            </div>
+
+
+            {% if error %}
+
+                <div class="login-error">
+
+                    ⚠️ {{ error }}
+
+                </div>
+
+            {% endif %}
+
+
+            <form method="POST" class="login-form">
+
+                {% csrf_token %}
+
+
+                <div class="mb-3">
+
+                    <label for="email">
+                        📧 Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        placeholder="Enter your email address"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="mb-4">
+
+                    <label for="password">
+                        🔐 Password
+                    </label>
+
+                    <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit"
+                        class="login-button">
+
+                    🔐 Login
+
+                </button>
+
+            </form>
+
+
+            <p class="text-center register-text">
+
+                Don't have an account?
+
+                <a href="{% url 'register' %}">
+                    Create Account
+                </a>
+
+            </p>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

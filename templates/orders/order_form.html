@@ -1,0 +1,266 @@
+{% extends 'base.html' %}
+
+{% block title %}Order Book{% endblock %}
+
+{% block content %}
+
+<style>
+
+    /* =========================
+       PREMIUM ORDER PAGE
+    ========================= */
+
+    .order-page {
+        min-height: 82vh;
+
+        background:
+            linear-gradient(
+                135deg,
+                #0f3d3e,
+                #164e63,
+                #1e293b
+            );
+
+        padding: 70px 15px 100px;
+    }
+
+
+    /* Order Card */
+
+    .order-card {
+        border: none;
+
+        border-radius: 25px;
+
+        padding: 35px !important;
+
+        background: rgba(255, 255, 255, 0.96);
+
+        box-shadow:
+            0 20px 50px rgba(0, 0, 0, 0.30);
+
+        backdrop-filter: blur(12px);
+    }
+
+
+    /* Heading */
+
+    .order-title {
+        font-size: 32px;
+
+        font-weight: 700;
+
+        color: #0f3d3e;
+    }
+
+
+    /* Book Information */
+
+    .book-info {
+        background: #f0fdfa;
+
+        border-radius: 18px;
+
+        padding: 22px;
+
+        border-left: 5px solid #0f766e;
+    }
+
+
+    .book-info h4 {
+        color: #0f3d3e;
+
+        font-weight: 700;
+
+        margin-bottom: 12px;
+    }
+
+
+    .book-info p {
+        margin-bottom: 6px;
+
+        color: #475569;
+
+        font-size: 16px;
+    }
+
+
+    /* Form */
+
+    .order-card form p {
+        margin-bottom: 18px;
+    }
+
+
+    .order-card form label {
+        display: block;
+
+        font-weight: 600;
+
+        color: #334155;
+
+        margin-bottom: 7px;
+    }
+
+
+    .order-card form input,
+    .order-card form textarea,
+    .order-card form select {
+
+        width: 100%;
+
+        padding: 12px 14px;
+
+        border: 1px solid #cbd5e1;
+
+        border-radius: 12px;
+
+        background: #ffffff;
+
+        transition: 0.25s;
+
+        font-size: 15px;
+    }
+
+
+    .order-card form input:focus,
+    .order-card form textarea:focus,
+    .order-card form select:focus {
+
+        border-color: #0f766e;
+
+        box-shadow:
+            0 0 0 3px rgba(15, 118, 110, 0.12);
+
+        outline: none;
+    }
+
+
+    /* Confirm Button */
+
+    .confirm-order-btn {
+
+        border: none;
+
+        border-radius: 50px;
+
+        padding: 14px 25px;
+
+        font-size: 17px;
+
+        font-weight: 600;
+
+        background:
+            linear-gradient(
+                135deg,
+                #0f766e,
+                #164e63
+            );
+
+        color: white;
+
+        transition: 0.3s;
+
+        box-shadow:
+            0 8px 20px rgba(15, 118, 110, 0.25);
+    }
+
+
+    .confirm-order-btn:hover {
+
+        transform: translateY(-2px);
+
+        box-shadow:
+            0 12px 25px rgba(15, 118, 110, 0.35);
+
+        color: white;
+    }
+
+
+    /* Mobile */
+
+    @media (max-width: 768px) {
+
+        .order-page {
+            padding: 40px 15px 80px;
+        }
+
+        .order-card {
+            padding: 25px !important;
+        }
+
+        .order-title {
+            font-size: 27px;
+        }
+
+    }
+
+</style>
+
+
+<div class="order-page">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-7">
+
+            <div class="card order-card">
+
+
+                <!-- Heading -->
+
+                <h2 class="text-center mb-4 order-title">
+                    🛒 Place Your Order
+                </h2>
+
+
+                <!-- Book Information -->
+
+                <div class="book-info text-center mb-4">
+
+                    <h4>
+                        📚 {{ book.book_name }}
+                    </h4>
+
+                    <p>
+                        <strong>Author:</strong>
+                        {{ book.author }}
+                    </p>
+
+                    <p>
+                        <strong>Price:</strong>
+                        ৳ {{ book.price }}
+                    </p>
+
+                </div>
+
+
+                <!-- Order Form -->
+
+                <form method="POST">
+
+                    {% csrf_token %}
+
+                    {{ form.as_p }}
+
+
+                    <button type="submit"
+                            class="confirm-order-btn w-100">
+
+                        🛒 Confirm Order
+
+                    </button>
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

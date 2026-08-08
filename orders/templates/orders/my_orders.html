@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+
+{% block title %}My Orders{% endblock %}
+
+{% block content %}
+
+<div style="
+    background: linear-gradient(135deg, #eef4ff, #f8fafc, #eaf2ff);
+    min-height: 100vh;
+    padding: 50px 0 70px 0;
+">
+
+    <div class="container">
+
+        <!-- Page Heading -->
+
+        <div class="text-center mb-5">
+
+            <h2 class="fw-bold mb-2" style="color:#172554;">
+                🛒 My Orders
+            </h2>
+
+            <p class="text-muted">
+                Track your orders and check their current status.
+            </p>
+
+        </div>
+
+
+        {% if orders %}
+
+            <div class="row">
+
+                {% for order in orders %}
+
+                    <div class="col-md-6 col-lg-4 mb-4">
+
+                        <div class="card shadow-lg border-0 h-100"
+                             style="
+                                border-radius:18px;
+                                overflow:hidden;
+                             ">
+
+                            {% if order.book.photo %}
+
+                                <img src="{{ order.book.photo.url }}"
+                                     class="card-img-top"
+                                     style="
+                                        height:250px;
+                                        object-fit:cover;
+                                     ">
+
+                            {% endif %}
+
+
+                            <div class="card-body p-4">
+
+                                <h4 class="card-title fw-bold mb-3">
+                                    {{ order.book.book_name }}
+                                </h4>
+
+
+                                <p class="mb-2">
+                                    ✍️ <strong>Author:</strong>
+                                    {{ order.book.author }}
+                                </p>
+
+
+                                <p class="mb-2">
+                                    💰 <strong>Price:</strong>
+                                    ৳ {{ order.book.price }}
+                                </p>
+
+
+                                <p class="mb-2">
+                                    📱 <strong>Mobile:</strong>
+                                    {{ order.mobile }}
+                                </p>
+
+
+                                <p class="mb-3">
+                                    📅 <strong>Order ID:</strong>
+                                    #{{ order.id }}
+                                </p>
+
+
+                                <p class="mb-3">
+
+                                    🔄 <strong>Status:</strong>
+
+
+                                    {% if order.status == "Pending" %}
+
+                                        <span class="badge bg-warning text-dark">
+                                            {{ order.status }}
+                                        </span>
+
+
+                                    {% elif order.status == "Processing" %}
+
+                                        <span class="badge bg-primary">
+                                            {{ order.status }}
+                                        </span>
+
+
+                                    {% elif order.status == "Completed" %}
+
+                                        <span class="badge bg-success">
+                                            {{ order.status }}
+                                        </span>
+
+
+                                    {% elif order.status == "Cancelled" %}
+
+                                        <span class="badge bg-danger">
+                                            {{ order.status }}
+                                        </span>
+
+
+                                    {% else %}
+
+                                        <span class="badge bg-secondary">
+                                            {{ order.status }}
+                                        </span>
+
+                                    {% endif %}
+
+                                </p>
+
+
+                                <a href="{% url 'book_detail' order.book.id %}?from=orders"
+                                   class="btn btn-primary w-100">
+
+                                    📖 View Book
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+
+        {% else %}
+
+            <div class="text-center py-5">
+
+                <h4>
+                    📚 You haven't placed any orders yet.
+                </h4>
+
+                <p class="text-muted">
+                    Browse our books and place your first order.
+                </p>
+
+                <a href="{% url 'book_list' %}"
+                   class="btn btn-warning">
+
+                    📚 Browse Books
+
+                </a>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}
+```

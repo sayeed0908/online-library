@@ -1,0 +1,168 @@
+```html
+{% extends 'base.html' %}
+
+{% block title %}
+{{ book.book_name }}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="card book-detail-card">
+
+        <div class="row align-items-center">
+
+
+            <!-- Book Image -->
+
+            <div class="col-md-5 text-center">
+
+                <div class="book-image-box">
+
+                    <img src="{{ book.photo.url }}"
+                         class="img-fluid shadow">
+
+                </div>
+
+            </div>
+
+
+            <!-- Book Details -->
+
+            <div class="col-md-7">
+
+                <h1 class="book-title">
+
+                    {{ book.book_name }}
+
+                </h1>
+
+
+                <hr>
+
+
+                <div class="book-info">
+
+
+                    <div class="book-info-item">
+
+                        <strong>✍️ Author:</strong>
+
+                        <span>
+                            {{ book.author }}
+                        </span>
+
+                    </div>
+
+
+                    <div class="book-info-item">
+
+                        <strong>🏢 Publisher:</strong>
+
+                        <span>
+                            {{ book.publisher }}
+                        </span>
+
+                    </div>
+
+
+                    <div class="book-info-item">
+
+                        <strong>📦 Source:</strong>
+
+                        <span>
+                            {{ book.source }}
+                        </span>
+
+                    </div>
+
+
+                    <div class="book-info-item">
+
+                        <strong>📑 Total Pages:</strong>
+
+                        <span>
+                            {{ book.total_pages }}
+                        </span>
+
+                    </div>
+
+
+                    <div class="book-info-item">
+
+                        <strong>🏷️ Category:</strong>
+
+                        <span>
+                            {{ book.category }}
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- Price -->
+
+                <div class="book-price">
+
+                    💰 ৳ {{ book.price }}
+
+                </div>
+
+
+                <!-- Description -->
+
+                <div class="description-box">
+
+                    <h5>
+                        📖 Description
+                    </h5>
+
+                    <p>
+                        {{ book.description }}
+                    </p>
+
+                </div>
+
+
+                <!-- Buttons -->
+
+                <div class="book-action-buttons">
+
+
+                    {% if request.GET.from != "orders" %}
+
+                        <a href="{% url 'order_book' book.id %}"
+                           class="buy-now-btn">
+
+                            🛒 Buy Now
+
+                        </a>
+
+                    {% endif %}
+
+
+                    <a href="{% url 'book_list' %}"
+                       class="btn btn-secondary back-btn ms-2">
+
+                        ← Back to Books
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+```

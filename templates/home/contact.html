@@ -1,0 +1,287 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+
+<style>
+
+    /* =========================
+       PREMIUM CONTACT PAGE
+    ========================= */
+
+    .contact-page {
+
+        min-height: 82vh;
+
+        background:
+            radial-gradient(
+                circle at top right,
+                rgba(14, 116, 144, 0.35),
+                transparent 40%
+            ),
+            linear-gradient(
+                135deg,
+                #0f172a,
+                #164e63,
+                #134e4a
+            );
+
+        padding: 75px 15px 110px;
+
+        display: flex;
+
+        align-items: center;
+    }
+
+
+    /* Main Contact Card */
+
+    .contact-card {
+
+        border: 1px solid rgba(255,255,255,0.15);
+
+        border-radius: 28px;
+
+        background: rgba(255,255,255,0.96);
+
+        box-shadow:
+            0 25px 60px rgba(0,0,0,0.35);
+
+        padding: 50px !important;
+
+        backdrop-filter: blur(15px);
+    }
+
+
+    /* Heading */
+
+    .contact-title {
+
+        font-size: 44px;
+
+        font-weight: 700;
+
+        color: #0f3d3e;
+    }
+
+
+    .contact-intro {
+
+        color: #64748b;
+
+        font-size: 18px;
+
+        line-height: 1.7;
+    }
+
+
+    /* Contact Information */
+
+    .contact-info {
+
+        margin-top: 30px;
+    }
+
+
+    .contact-item {
+
+        padding: 18px;
+
+        margin-bottom: 15px;
+
+        border-radius: 16px;
+
+        background: #f0fdfa;
+
+        border-left: 5px solid #0f766e;
+
+        transition: 0.3s;
+    }
+
+
+    .contact-item:hover {
+
+        transform: translateX(6px);
+
+        box-shadow:
+            0 8px 20px rgba(0,0,0,0.10);
+    }
+
+
+    .contact-item h5 {
+
+        color: #0f3d3e;
+
+        font-weight: 700;
+
+        margin-bottom: 6px;
+    }
+
+
+    .contact-item p {
+
+        color: #475569;
+
+        margin: 0;
+
+        font-size: 16px;
+    }
+
+
+    /* Footer text inside card */
+
+    .library-signature {
+
+        margin-top: 30px;
+
+        padding-top: 25px;
+
+        border-top: 1px solid #e2e8f0;
+    }
+
+
+    .library-signature h4 {
+
+        color: #0f3d3e;
+
+        font-weight: 700;
+    }
+
+
+    .library-signature p {
+
+        color: #64748b;
+
+        margin-bottom: 0;
+    }
+
+
+    /* Mobile */
+
+    @media (max-width: 768px) {
+
+        .contact-page {
+
+            padding: 45px 15px 80px;
+        }
+
+        .contact-card {
+
+            padding: 30px 20px !important;
+        }
+
+        .contact-title {
+
+            font-size: 34px;
+        }
+
+    }
+
+</style>
+
+
+<div class="contact-page">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-8">
+
+                <div class="card contact-card text-center">
+
+
+                    <!-- Heading -->
+
+                    <h1 class="contact-title mb-3">
+                        📞 Contact Us
+                    </h1>
+
+
+                    <p class="contact-intro">
+                        Have any questions? Feel free to contact with us.
+                        We are always happy to hear from our readers.
+                    </p>
+
+
+                    <!-- Contact Information -->
+
+                    <div class="contact-info">
+
+
+                        <!-- Email -->
+
+                        <div class="contact-item">
+
+                            <h5>
+                                📧 Email
+                            </h5>
+
+                            <p>
+                                sayeedali9415@gmail.com
+                            </p>
+
+                        </div>
+
+
+                        <!-- Phone -->
+
+                        <div class="contact-item">
+
+                            <h5>
+                                📱 Phone
+                            </h5>
+
+                            <p>
+                                01764969415
+                            </p>
+
+                        </div>
+
+
+                        <!-- Address -->
+
+                        <div class="contact-item">
+
+                            <h5>
+                                📍 Address
+                            </h5>
+
+                            <p>
+                                Dargardanga Bazar, Tanore, Rajshahi
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- Library Signature -->
+
+                    <div class="library-signature">
+
+                        <h4>
+                            📚 Online Library
+                        </h4>
+
+                        <p>
+                            Read More • Learn More • Grow More
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

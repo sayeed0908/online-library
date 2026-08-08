@@ -1,0 +1,454 @@
+/* Hero Section */
+
+.hero{
+    background: linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
+    url("../images/library.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    min-height: 90vh;
+
+    display:flex;
+    align-items:center;
+
+    color:white;
+}
+
+.hero h1{
+
+    font-size:60px;
+    font-weight:bold;
+
+}
+
+.hero p{
+
+    font-size:22px;
+
+}
+
+.hero .btn{
+
+    padding:14px 30px;
+    border-radius:50px;
+
+}
+
+/* ===========================
+   HERO SECTION
+=========================== */
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+    min-height: 90vh;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.65),
+            rgba(0, 0, 0, 0.65)
+        ),
+        url("../images/library.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+
+    color: white;
+}
+
+.hero h1 {
+    font-size: 65px;
+    font-weight: bold;
+}
+
+.hero p {
+    font-size: 22px;
+}
+
+.hero .btn {
+    padding: 14px 32px;
+    border-radius: 50px;
+}
+
+.hero-box {
+    background: white;
+    color: #222;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================
+   FEATURE CARDS
+========================= */
+
+.feature-card {
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    transition: 0.4s;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.1);
+
+    height: 100%;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.icon {
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   LATEST BOOKS
+========================= */
+
+.latest-books-section {
+    background:
+        linear-gradient(
+            rgba(255, 255, 255, 0.92),
+            rgba(255, 255, 255, 0.92)
+        ),
+        url("../images/library.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+
+/* Book Cards */
+
+.latest-books-section .card {
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    border: none;
+
+    background: rgba(255, 255, 255, 0.85);
+
+    backdrop-filter: blur(10px);
+
+    transition: all 0.3s ease;
+}
+
+.latest-books-section .card:hover {
+    transform: translateY(-12px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.20);
+}
+
+.latest-books-section img {
+    transition: 0.4s;
+}
+
+.latest-books-section .card:hover img {
+    transform: scale(1.05);
+}
+
+
+/* =========================
+   STATISTICS SECTION
+========================= */
+
+.stats-section {
+    background:
+        linear-gradient(
+            rgba(10, 40, 70, 0.78),
+            rgba(10, 40, 70, 0.78)
+        ),
+        url("../images/library.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+
+/* Statistics Cards */
+
+.stats-section .card {
+    border-radius: 25px;
+
+    background: rgba(255, 255, 255, 0.90);
+
+    backdrop-filter: blur(15px);
+
+    border: none;
+
+    transition: 0.3s;
+}
+
+.stats-section .card:hover {
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.stats-section h1 {
+    font-size: 45px;
+}
+
+
+/* =========================
+   WHY CHOOSE LIBRARY
+========================= */
+
+.why-library-section {
+
+    background:
+        linear-gradient(
+            135deg,
+            #172554,
+            #1e3a5f,
+            #0f172a
+        );
+
+    color: white;
+
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+}
+
+
+/* Why Choose Heading */
+
+.why-library-section h2 {
+    color: white;
+
+    font-weight: 700;
+}
+
+
+/* Why Choose Description */
+
+.why-library-section > .container > p {
+    color: #dbeafe;
+}
+
+
+/* Why Choose Cards */
+
+.why-library-section .card {
+
+    background: rgba(255, 255, 255, 0.95);
+
+    border: none;
+
+    border-radius: 20px;
+
+    transition: 0.3s;
+
+    height: 100%;
+}
+
+.why-library-section .card:hover {
+
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.20);
+}
+
+
+/* Card Heading */
+
+.why-library-section .card h5 {
+    color: #172554;
+}
+
+
+/* Card Description */
+
+.why-library-section .card p {
+    color: #475569;
+}
+
+
+/* =========================
+   GENERAL CARD STYLE
+========================= */
+
+section .card {
+    border-radius: 20px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn {
+    border-radius: 30px;
+
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+
+/* =========================
+   HEADINGS
+========================= */
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    letter-spacing: 0.3px;
+}
+
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    .display-3 {
+        font-size: 2.5rem;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    .stats-section h1 {
+        font-size: 35px;
+    }
+
+}
+
+.why-library-section {
+    background: #172554 !important;
+    color: white !important;
+    padding: 80px 0 !important;
+}
+
+.why-library-section h2 {
+    color: white !important;
+}
+
+.why-library-section p {
+    color: #dbeafe !important;
+}
+
+.why-library-section .card {
+    background: white !important;
+}
+
+/* =========================
+   BOOK LIST PREMIUM PAGE
+========================= */
+
+.book-list-page {
+    min-height: 82vh;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(30, 64, 90, 0.9),
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            #111827,
+            #1c2836,
+            #263445
+        );
+
+    color: white;
+
+    padding-top: 55px;
+    padding-bottom: 100px;
+}
+
+
+/* Book List Heading */
+
+.book-list-page h2 {
+    color: #f8fafc;
+    font-weight: 700;
+}
+
+
+/* Search / Filter area */
+
+.book-list-page input,
+.book-list-page select {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+}
+
+
+/* Table */
+
+.book-list-page .table-responsive {
+    border-radius: 16px;
+    overflow: hidden;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+
+/* Table body */
+
+.book-list-page table {
+    background: rgba(255, 255, 255, 0.96);
+}
+
+
+/* Table hover */
+
+.book-list-page tbody tr {
+    transition: 0.25s;
+}
+
+.book-list-page tbody tr:hover {
+    background: #e8f1f8;
+}
+
+
+/* Book images */
+
+.book-list-page img {
+    border-radius: 8px;
+}
+
+
+/* Empty message */
+
+.book-list-page .text-center {
+    color: inherit;
+}

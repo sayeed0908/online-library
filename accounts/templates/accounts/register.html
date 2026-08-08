@@ -1,0 +1,242 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Account{% endblock %}
+
+{% block content %}
+
+<style>
+
+    .register-page {
+
+        min-height: 82vh;
+
+        background:
+            radial-gradient(
+                circle at top right,
+                rgba(14, 116, 144, 0.35),
+                transparent 40%
+            ),
+            linear-gradient(
+                135deg,
+                #0f172a,
+                #164e63,
+                #134e4a
+            );
+
+        padding: 70px 15px 100px;
+
+        display: flex;
+        align-items: center;
+    }
+
+
+    .register-card {
+
+        max-width: 550px;
+
+        margin: auto;
+
+        border: none;
+
+        border-radius: 28px;
+
+        background: rgba(255,255,255,0.97);
+
+        box-shadow:
+            0 25px 60px rgba(0,0,0,0.35);
+
+        padding: 45px !important;
+    }
+
+
+    .register-title {
+
+        color: #0f3d3e;
+
+        font-size: 38px;
+
+        font-weight: 700;
+    }
+
+
+    .register-subtitle {
+
+        color: #64748b;
+
+        line-height: 1.6;
+    }
+
+
+    .register-form p {
+
+        margin-bottom: 20px;
+    }
+
+
+    .register-form label {
+
+        display: block;
+
+        font-weight: 600;
+
+        color: #334155;
+
+        margin-bottom: 7px;
+    }
+
+
+    .register-form input {
+
+        width: 100%;
+
+        padding: 12px 15px;
+
+        border: 1px solid #cbd5e1;
+
+        border-radius: 12px;
+
+        outline: none;
+
+        transition: 0.3s;
+    }
+
+
+    .register-form input:focus {
+
+        border-color: #0f766e;
+
+        box-shadow:
+            0 0 0 3px rgba(15,118,110,0.12);
+    }
+
+
+    .register-form ul {
+
+        color: #dc2626;
+
+        padding-left: 20px;
+
+        font-size: 14px;
+    }
+
+
+    .register-button {
+
+        width: 100%;
+
+        border: none;
+
+        border-radius: 50px;
+
+        padding: 13px;
+
+        font-size: 17px;
+
+        font-weight: 600;
+
+        color: white;
+
+        background:
+            linear-gradient(
+                135deg,
+                #0f766e,
+                #164e63
+            );
+
+        transition: 0.3s;
+    }
+
+
+    .register-button:hover {
+
+        transform: translateY(-3px);
+
+        box-shadow:
+            0 10px 25px rgba(15,118,110,0.3);
+    }
+
+
+    .login-text {
+
+        color: #64748b;
+
+        margin-top: 25px;
+
+        margin-bottom: 0;
+    }
+
+
+    @media (max-width: 576px) {
+
+        .register-card {
+
+            padding: 30px 22px !important;
+        }
+
+        .register-title {
+
+            font-size: 30px;
+        }
+
+    }
+
+</style>
+
+
+<div class="register-page">
+
+    <div class="container">
+
+        <div class="card register-card">
+
+
+            <div class="text-center mb-4">
+
+                <h1 class="register-title">
+                    📚 Create Account
+                </h1>
+
+                <p class="register-subtitle">
+                    Join Online Library and start discovering
+                    your favorite books.
+                </p>
+
+            </div>
+
+
+            <form method="POST" class="register-form">
+
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+
+                <button type="submit"
+                        class="register-button">
+
+                    📝 Create Account
+
+                </button>
+
+            </form>
+
+
+            <p class="text-center login-text">
+
+                Already have an account?
+
+                <a href="{% url 'login' %}">
+                    Login
+                </a>
+
+            </p>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

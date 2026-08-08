@@ -1,0 +1,305 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+
+<style>
+
+    /* About Page Premium Background */
+
+    .about-page {
+        min-height: 75vh;
+
+        background:
+            linear-gradient(
+                135deg,
+                #0f172a,
+                #172554,
+                #1e3a5f
+            );
+
+        color: white;
+
+        padding: 80px 0;
+    }
+
+
+    /* Main About Card */
+
+    .about-card {
+        max-width: 950px;
+
+        margin: auto;
+
+        padding: 55px;
+
+        border-radius: 25px;
+
+        background: rgba(255, 255, 255, 0.08);
+
+        backdrop-filter: blur(15px);
+
+        border: 1px solid rgba(255, 255, 255, 0.15);
+
+        box-shadow:
+            0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+
+
+    /* Heading */
+
+    .about-card h1 {
+        font-size: 48px;
+
+        font-weight: 700;
+
+        margin-bottom: 20px;
+    }
+
+
+    .about-card h1 span {
+        color: #60a5fa;
+    }
+
+
+    /* Main paragraph */
+
+    .about-intro {
+        font-size: 20px;
+
+        line-height: 1.8;
+
+        color: #dbeafe;
+
+        margin-bottom: 25px;
+    }
+
+
+    /* Other paragraphs */
+
+    .about-card p {
+        color: #cbd5e1;
+
+        font-size: 17px;
+
+        line-height: 1.8;
+    }
+
+
+    /* Small feature boxes */
+
+    .about-feature {
+        margin-top: 35px;
+    }
+
+
+    .about-feature .feature-box {
+        height: 100%;
+
+        padding: 25px;
+
+        border-radius: 18px;
+
+        background: rgba(255, 255, 255, 0.08);
+
+        border: 1px solid rgba(255, 255, 255, 0.12);
+
+        transition: 0.3s;
+    }
+
+
+    .about-feature .feature-box:hover {
+        transform: translateY(-8px);
+
+        background: rgba(255, 255, 255, 0.13);
+
+        box-shadow:
+            0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+
+    .feature-box h4 {
+        color: white;
+
+        margin-top: 10px;
+
+        font-weight: 600;
+    }
+
+
+    .feature-box p {
+        font-size: 15px;
+
+        color: #cbd5e1;
+    }
+
+
+    .feature-icon {
+        font-size: 42px;
+    }
+
+
+    /* Mobile */
+
+    @media (max-width: 768px) {
+
+        .about-page {
+            padding: 50px 15px;
+        }
+
+        .about-card {
+            padding: 30px 20px;
+        }
+
+        .about-card h1 {
+            font-size: 36px;
+        }
+
+        .about-intro {
+            font-size: 18px;
+        }
+
+    }
+
+</style>
+
+
+<div class="about-page">
+
+    <div class="container">
+
+        <div class="about-card">
+
+            <h1>
+                📚 About <span>Online Library</span>
+            </h1>
+
+
+            <p class="about-intro">
+                Online Library is a modern digital library platform
+                designed to make discovering, exploring, and purchasing
+                books easier and more convenient.
+            </p>
+
+
+            <p>
+                Our goal is to create a simple and user-friendly
+                online environment where readers can browse a wide
+                collection of books, explore different categories,
+                check book details, and place orders easily.
+            </p>
+
+
+            <p>
+                Whether you are looking for educational books,
+                literature, novels, reference materials, or other
+                reading resources, our platform helps you find the
+                right book quickly and conveniently.
+            </p>
+
+
+            <p>
+                We believe that books are a powerful source of
+                knowledge, creativity, and personal growth.
+                Our mission is to make access to books easier while
+                providing a smooth and enjoyable experience for every
+                reader.
+            </p>
+
+
+            <!-- Features -->
+
+            <div class="row about-feature">
+
+
+                <div class="col-md-4 mb-4">
+
+                    <div class="feature-box text-center">
+
+                        <div class="feature-icon">
+                            📚
+                        </div>
+
+                        <h4>
+                            Wide Collection
+                        </h4>
+
+                        <p>
+                            Discover books from different categories
+                            and subjects in one place.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4 mb-4">
+
+                    <div class="feature-box text-center">
+
+                        <div class="feature-icon">
+                            🔍
+                        </div>
+
+                        <h4>
+                            Easy Discovery
+                        </h4>
+
+                        <p>
+                            Search and explore your favorite books
+                            quickly and easily.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4 mb-4">
+
+                    <div class="feature-box text-center">
+
+                        <div class="feature-icon">
+                            🛒
+                        </div>
+
+                        <h4>
+                            Easy Ordering
+                        </h4>
+
+                        <p>
+                            Select your favorite book and place your
+                            order with just a few clicks.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="text-center mt-4">
+
+                <h4>
+                    📖 Read More • Learn More • Grow More
+                </h4>
+
+                <p>
+                    Thank you for being a part of Online Library.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

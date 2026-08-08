@@ -1,0 +1,165 @@
+{% load static %}
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+<!-- Navbar -->
+
+<nav class="navbar navbar-expand-lg bg-light shadow-sm">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="/">
+            📚 Online Library
+        </a>
+
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbar">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbar">
+
+            <ul class="navbar-nav ms-auto">
+
+                <!-- Home -->
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/">
+                        Home
+                    </a>
+                </li>
+
+
+                <!-- About -->
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/about/">
+                        About
+                    </a>
+                </li>
+
+
+                <!-- Book List -->
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/books/">
+                        Book List
+                    </a>
+                </li>
+
+
+                <!-- Contact -->
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact/">
+                        Contact Us
+                    </a>
+                </li>
+
+
+                {% if user.is_authenticated and not user.is_staff %}
+
+                    <!-- My Orders -->
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'my_orders' %}">
+                            🛒 My Orders
+                        </a>
+                    </li>
+
+
+                    <!-- Username -->
+
+                    <li class="nav-item">
+                        <span class="nav-link text-success">
+                            👤 {{ user.username }}
+                        </span>
+                    </li>
+
+
+                    <!-- Logout -->
+
+                    <li class="nav-item">
+                        <a class="btn btn-danger ms-lg-2"
+   href="/accounts/logout/">
+    Logout
+</a>
+                    </li>
+
+
+                {% else %}
+
+                    <!-- Register -->
+
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary ms-lg-2"
+                           href="{% url 'register' %}">
+                            Register
+                        </a>
+                    </li>
+
+
+                    <!-- Login -->
+
+                    <li class="nav-item">
+                        <a class="btn btn-primary ms-lg-2"
+                           href="{% url 'login' %}">
+                            Login
+                        </a>
+                    </li>
+
+                {% endif %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- Main Content -->
+
+{% block content %}
+{% endblock %}
+
+
+<!-- Footer -->
+
+<footer class="text-center py-4 mt-5">
+
+    <h5>
+        📚 Online Library
+    </h5>
+
+    <p>
+        Read More • Learn More • Grow More
+    </p>
+
+    <hr>
+
+    <small>
+        © 2026 Online Library | All Rights Reserved
+    </small>
+
+</footer>
+
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
