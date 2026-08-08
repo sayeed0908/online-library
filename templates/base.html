@@ -1,5 +1,62 @@
 {% load static %}
 
+<style>
+    /* =========================
+       MOBILE NAVBAR
+       ========================= */
+
+    @media (max-width: 991.98px) {
+
+        #navbar {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 12px;
+
+            width: 230px;
+
+            background: white;
+            padding: 10px;
+
+            border-radius: 12px;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+
+            z-index: 1050;
+        }
+
+        #navbar .navbar-nav {
+            width: 100%;
+            margin: 0 !important;
+        }
+
+        #navbar .nav-item {
+            width: 100%;
+            margin: 0;
+        }
+
+        #navbar .nav-link {
+            width: 100%;
+            padding: 10px 12px;
+
+            color: #212529;
+            border-radius: 8px;
+        }
+
+        #navbar .nav-link:hover {
+            background: #f1f3f5;
+        }
+
+        #navbar .btn {
+            width: 100%;
+
+            margin-left: 0 !important;
+            margin-top: 6px;
+
+            padding: 9px 12px;
+        }
+    }
+</style>
+
 <!-- Bootstrap 5 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -9,102 +66,130 @@
 <!-- Custom CSS -->
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+<style>
+    /* Mobile navbar improvements */
+    @media (max-width: 991.98px) {
+
+        #navbar {
+            margin-top: 15px;
+            padding: 12px 0 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        #navbar .navbar-nav {
+            width: 100%;
+        }
+
+        #navbar .nav-item {
+            width: 100%;
+            margin-bottom: 4px;
+        }
+
+        #navbar .nav-link {
+            display: block;
+            width: 100%;
+            padding: 10px 12px;
+        }
+
+        /* Register & Login আলাদা করে spacing */
+        #navbar .nav-item .btn {
+            display: block;
+            width: 100%;
+            margin-left: 0 !important;
+            margin-top: 8px;
+            padding: 10px 15px;
+        }
+
+        #navbar .nav-item:last-child {
+            margin-bottom: 8px;
+        }
+
+    }
+</style>
 
 <!-- Navbar -->
 
-<nav class="navbar navbar-expand-lg bg-light shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container position-relative">
 
-    <div class="container">
-
+        <!-- Logo -->
         <a class="navbar-brand fw-bold" href="/">
             📚 Online Library
         </a>
 
-
+        <!-- Mobile Menu Button -->
         <button class="navbar-toggler"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#navbar">
+                data-bs-target="#navbar"
+                aria-controls="navbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
 
             <span class="navbar-toggler-icon"></span>
 
         </button>
 
-
+        <!-- Navigation Menu -->
         <div class="collapse navbar-collapse" id="navbar">
 
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
 
                 <!-- Home -->
-
                 <li class="nav-item">
                     <a class="nav-link" href="/">
                         Home
                     </a>
                 </li>
 
-
                 <!-- About -->
-
                 <li class="nav-item">
                     <a class="nav-link" href="/about/">
                         About
                     </a>
                 </li>
 
-
                 <!-- Book List -->
-
                 <li class="nav-item">
                     <a class="nav-link" href="/books/">
                         Book List
                     </a>
                 </li>
 
-
                 <!-- Contact -->
-
                 <li class="nav-item">
                     <a class="nav-link" href="/contact/">
                         Contact Us
                     </a>
                 </li>
 
-
                 {% if user.is_authenticated and not user.is_staff %}
 
                     <!-- My Orders -->
-
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'my_orders' %}">
                             🛒 My Orders
                         </a>
                     </li>
 
-
                     <!-- Username -->
-
                     <li class="nav-item">
                         <span class="nav-link text-success">
                             👤 {{ user.username }}
                         </span>
                     </li>
 
-
                     <!-- Logout -->
-
                     <li class="nav-item">
                         <a class="btn btn-danger ms-lg-2"
-   href="/accounts/logout/">
-    Logout
-</a>
+                           href="/accounts/logout/">
+                            Logout
+                        </a>
                     </li>
-
 
                 {% else %}
 
                     <!-- Register -->
-
                     <li class="nav-item">
                         <a class="btn btn-outline-primary ms-lg-2"
                            href="{% url 'register' %}">
@@ -112,9 +197,7 @@
                         </a>
                     </li>
 
-
                     <!-- Login -->
-
                     <li class="nav-item">
                         <a class="btn btn-primary ms-lg-2"
                            href="{% url 'login' %}">
@@ -129,7 +212,6 @@
         </div>
 
     </div>
-
 </nav>
 
 
