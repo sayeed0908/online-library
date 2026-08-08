@@ -11,10 +11,10 @@ urlpatterns = [
     ),
 
     path(
-        "login/",
-        views.user_login,
-        name="login"
-    ),
+    "login/",
+    views.user_login,
+    name="login"
+),
 
     path(
         "logout/",
